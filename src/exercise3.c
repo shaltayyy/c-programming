@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
         result[new_index] = array[i];
     }
     
-    // Вывод результата
+    
     for(int i = 0; i < 10; i++) {
         printf("%g", result[i]);
         if (i < 9) {
