@@ -1,7 +1,7 @@
 #include <limits.h>
 #include <stdlib.h>
 
-// Функция 1: Максимальная сумма подмассива
+
 int max_subarray_sum(int* nums, int size) {
     if (size == 0) return 0;
     
@@ -23,7 +23,7 @@ int max_subarray_sum(int* nums, int size) {
     return max_sum;
 }
 
-// Функция 2: Длина возрастающей подпоследовательности
+
 int length_of_lis(int* nums, int numsSize) {
     if (numsSize == 0) return 0;
     
@@ -44,21 +44,21 @@ int length_of_lis(int* nums, int numsSize) {
     return max_length;
 }
 
-// Функция для сравнения интервалов
+
 int compare_intervals(const void* a, const void* b) {
     int* interval_a = (int*)a;
     int* interval_b = (int*)b;
     return interval_a[0] - interval_b[0];
 }
 
-// Функция 3: Объединение интервалов
+
 int* merge(int* intervals, int intervalsSize, int* returnSize) {
     if (intervalsSize == 0) {
         *returnSize = 0;
         return NULL;
     }
     
-    // Создаем копию интервалов
+    
     int** intervals_copy = (int**)malloc(intervalsSize * sizeof(int*));
     for (int i = 0; i < intervalsSize; i++) {
         intervals_copy[i] = (int*)malloc(2 * sizeof(int));
@@ -66,20 +66,20 @@ int* merge(int* intervals, int intervalsSize, int* returnSize) {
         intervals_copy[i][1] = intervals[i * 2 + 1];
     }
     
-    // Сортируем интервалы
+    
     qsort(intervals_copy, intervalsSize, sizeof(int*), compare_intervals);
     
-    // Временный массив для результатов
+    
     int** result_temp = (int**)malloc(intervalsSize * sizeof(int*));
     int result_count = 0;
     
-    // Добавляем первый интервал
+    
     result_temp[result_count] = (int*)malloc(2 * sizeof(int));
     result_temp[result_count][0] = intervals_copy[0][0];
     result_temp[result_count][1] = intervals_copy[0][1];
     result_count++;
     
-    // Объединяем интервалы
+    
     for (int i = 1; i < intervalsSize; i++) {
         int* last_interval = result_temp[result_count - 1];
         int* current_interval = intervals_copy[i];
@@ -96,7 +96,7 @@ int* merge(int* intervals, int intervalsSize, int* returnSize) {
         }
     }
     
-    // Создаем конечный массив
+    
     int* result = (int*)malloc(result_count * 2 * sizeof(int));
     for (int i = 0; i < result_count; i++) {
         result[i * 2] = result_temp[i][0];
@@ -105,7 +105,7 @@ int* merge(int* intervals, int intervalsSize, int* returnSize) {
     
     *returnSize = result_count * 2;
     
-    // Очищаем память
+    
     for (int i = 0; i < intervalsSize; i++) {
         free(intervals_copy[i]);
     }
