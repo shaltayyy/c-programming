@@ -33,20 +33,20 @@ void join_and_sort_int_arrays(int* src1, size_t size_src1, int* src2, size_t siz
     }
 }
 
-// Функция 3: Поиск минимума и максимума
+
 void get_min_and_max_from_int_array(int* src, size_t size, int* min, int* max) {
     if (size == 0) {
-        // Если массив пустой, устанавливаем значения по умолчанию
+        
         *min = 0;
         *max = 0;
         return;
     }
     
-    // Инициализируем min и max первым элементом массива
+    
     *min = src[0];
     *max = src[0];
     
-    // Проходим по остальным элементам
+    
     for (size_t i = 1; i < size; i++) {
         if (src[i] < *min) {
             *min = src[i];
